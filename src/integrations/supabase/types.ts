@@ -14,7 +14,148 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      prospect_activities: {
+        Row: {
+          activity_type: string
+          created_at: string | null
+          created_by: string
+          description: string
+          id: string
+          prospect_id: string | null
+          stage: number | null
+        }
+        Insert: {
+          activity_type: string
+          created_at?: string | null
+          created_by: string
+          description: string
+          id?: string
+          prospect_id?: string | null
+          stage?: number | null
+        }
+        Update: {
+          activity_type?: string
+          created_at?: string | null
+          created_by?: string
+          description?: string
+          id?: string
+          prospect_id?: string | null
+          stage?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prospect_activities_prospect_id_fkey"
+            columns: ["prospect_id"]
+            isOneToOne: false
+            referencedRelation: "prospects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      prospect_files: {
+        Row: {
+          file_name: string
+          file_type: string | null
+          file_url: string
+          id: string
+          prospect_id: string | null
+          stage: number
+          uploaded_at: string | null
+        }
+        Insert: {
+          file_name: string
+          file_type?: string | null
+          file_url: string
+          id?: string
+          prospect_id?: string | null
+          stage: number
+          uploaded_at?: string | null
+        }
+        Update: {
+          file_name?: string
+          file_type?: string | null
+          file_url?: string
+          id?: string
+          prospect_id?: string | null
+          stage?: number
+          uploaded_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prospect_files_prospect_id_fkey"
+            columns: ["prospect_id"]
+            isOneToOne: false
+            referencedRelation: "prospects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      prospects: {
+        Row: {
+          assigned_to: string
+          company_name: string
+          contact_email: string | null
+          contact_name: string
+          contact_phone: string | null
+          created_at: string | null
+          current_stage: number | null
+          estimated_value: number | null
+          expected_close_date: string | null
+          first_contact_date: string
+          id: string
+          is_lost: boolean | null
+          last_action: string | null
+          lost_reason: string | null
+          next_step: string | null
+          priority_level: string | null
+          stage_progress: Json | null
+          tags: string[] | null
+          updated_at: string | null
+        }
+        Insert: {
+          assigned_to: string
+          company_name: string
+          contact_email?: string | null
+          contact_name: string
+          contact_phone?: string | null
+          created_at?: string | null
+          current_stage?: number | null
+          estimated_value?: number | null
+          expected_close_date?: string | null
+          first_contact_date: string
+          id?: string
+          is_lost?: boolean | null
+          last_action?: string | null
+          lost_reason?: string | null
+          next_step?: string | null
+          priority_level?: string | null
+          stage_progress?: Json | null
+          tags?: string[] | null
+          updated_at?: string | null
+        }
+        Update: {
+          assigned_to?: string
+          company_name?: string
+          contact_email?: string | null
+          contact_name?: string
+          contact_phone?: string | null
+          created_at?: string | null
+          current_stage?: number | null
+          estimated_value?: number | null
+          expected_close_date?: string | null
+          first_contact_date?: string
+          id?: string
+          is_lost?: boolean | null
+          last_action?: string | null
+          lost_reason?: string | null
+          next_step?: string | null
+          priority_level?: string | null
+          stage_progress?: Json | null
+          tags?: string[] | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
